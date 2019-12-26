@@ -1,5 +1,23 @@
 load("@rules_android//android:rules.bzl", "android_binary", "android_library")
-load("@rules_jvm_external//:defs.bzl", "artifact")
+
+# https://stackoverflow.com/questions/56218583/how-to-use-room-database-in-android-with-bazel
+
+java_plugin(
+    name = "androidx_room_room_compiler_plugin",
+    neverlink = True,
+    #    processor_class = "androidx.room.RoomProcessor",
+    deps = ["@maven//:androidx_room_room_compiler"],
+)
+
+java_library(
+    name = "androidx_room_room_compiler_library",
+    exported_plugins = [
+        ":androidx_room_room_compiler_plugin",
+    ],
+    exports = [
+        "@maven//:androidx_room_room_compiler",
+    ],
+)
 
 android_library(
     name = "lib",
@@ -12,21 +30,21 @@ android_library(
         exclude = ["res/**/*~"],
     ),
     deps = [
-        artifact("androidx_appcompat:appcompat"),
-        artifact("androidx_fragment:fragment"),
-        artifact("androidx_lifecycle:lifecycle-extensions"),
-        artifact("androidx_lifecycle:lifecycle-common-java8"),
-        artifact("androidx_lifecycle:lifecycle-livedata-core"),
-        artifact("androidx_lifecycle:lifecycle-viewmodel"),
-        artifact("androidx_annotation:annotation"),
-        artifact("androidx_preference:preference"),
-        artifact("androidx_recyclerview:recyclerview"),
-        artifact("androidx_room:room-runtime"),
-        artifact("androidx_room:room-common"),
-        #        artifact("androidx_room:room-compiler"),
-        artifact("androidx_constraintlayout:constraintlayout"),
-        artifact("com_google_android:material-material"),
-        artifact("androidx_sqlite:sqlite"),
+        ":androidx_room_room_compiler_library",
+        "@maven//:androidx_annotation_annotation",
+        "@maven//:androidx_appcompat_appcompat",
+        "@maven//:androidx_constraintlayout_constraintlayout",
+        "@maven//:androidx_fragment_fragment",
+        "@maven//:androidx_lifecycle_lifecycle_common_java8",
+        "@maven//:androidx_lifecycle_lifecycle_extensions",
+        "@maven//:androidx_lifecycle_lifecycle_livedata_core",
+        "@maven//:androidx_lifecycle_lifecycle_viewmodel",
+        "@maven//:androidx_preference_preference",
+        "@maven//:androidx_recyclerview_recyclerview",
+        "@maven//:androidx_room_room_common",
+        "@maven//:androidx_room_room_runtime",
+        "@maven//:androidx_sqlite_sqlite",
+        "@maven//:com_google_android_material_material",
     ],
 )
 
