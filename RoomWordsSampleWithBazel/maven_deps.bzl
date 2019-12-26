@@ -10,13 +10,11 @@ ROOM_WORDS_SAMPLE_MAVEN_ARTIFACTS = [
     "androidx.lifecycle:lifecycle-viewmodel:2.2.0-rc03",
     "androidx.preference:preference:1.1.0",
     "androidx.recyclerview:recyclerview:1.1.0",
-
     "androidx.room:room-runtime:2.2.3",
     "androidx.room:room-common:2.2.3",
-#		maven.artifact(group = "com.squareup", artifact = "javapoet", version = "1.11.1", neverlink = True),
-#		"androidx.room:room-compiler:2.2.3",
-
+    #		maven.artifact(group = "com.squareup", artifact = "javapoet", version = "1.11.1", neverlink = True),
+    #		"androidx.room:room-compiler:2.2.3",
     "androidx.constraintlayout:constraintlayout:1.1.3",
     "com.google.android.material:material:1.0.0",
-		"androidx.sqlite:sqlite:2.0.1",
+    "androidx.sqlite:sqlite:2.0.1",
 ]

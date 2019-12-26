@@ -18,17 +18,15 @@ android_library(
         artifact("androidx_lifecycle:lifecycle-common-java8"),
         artifact("androidx_lifecycle:lifecycle-livedata-core"),
         artifact("androidx_lifecycle:lifecycle-viewmodel"),
-				artifact("androidx_annotation:annotation"),
+        artifact("androidx_annotation:annotation"),
         artifact("androidx_preference:preference"),
         artifact("androidx_recyclerview:recyclerview"),
-
         artifact("androidx_room:room-runtime"),
-				artifact("androidx_room:room-common"),
-#        artifact("androidx_room:room-compiler"),
-
+        artifact("androidx_room:room-common"),
+        #        artifact("androidx_room:room-compiler"),
         artifact("androidx_constraintlayout:constraintlayout"),
         artifact("com_google_android:material-material"),
-				artifact("androidx_sqlite:sqlite"),
+        artifact("androidx_sqlite:sqlite"),
     ],
 )
 

@@ -1,19 +1,6 @@
 load("@bazel_tools//tools/build_defs/repo:http.bzl", "http_archive")
 
 ########################################################################
-## BEGIN BUILDIFIER SETUP
-
-http_archive(
-    name = "com_github_bazelbuild_buildtools",
-    strip_prefix = "buildtools-baa9c57c396019f0b7272b95d66f8e2681ed7d2a",
-    url = "https://github.com/bazelbuild/buildtools/archive/baa9c57c396019f0b7272b95d66f8e2681ed7d2a.zip",
-)
-
-load("@com_github_bazelbuild_buildtools//buildifier:deps.bzl", "buildifier_dependencies")
-
-buildifier_dependencies()
-
-########################################################################
 # BEGIN ANDROD SETUP
 RULES_ANDROID_VERSION = "0.1.1"
 
@@ -61,7 +48,7 @@ maven_install(
         "https://maven.google.com",
         "https://repo1.maven.org/maven2",
     ],
-		strict_visibility = True
+    strict_visibility = True,
 )
 
 load("@maven//:compat.bzl", "compat_repositories")
