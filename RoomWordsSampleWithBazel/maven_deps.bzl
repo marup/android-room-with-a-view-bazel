@@ -17,4 +17,6 @@ ROOM_WORDS_SAMPLE_MAVEN_ARTIFACTS = [
     "androidx.constraintlayout:constraintlayout:1.1.3",
     "com.google.android.material:material:1.0.0",
     "androidx.sqlite:sqlite:2.0.1",
+		# Not using directly, but seems to be needed.
+		"com.google.guava:guava:28.1-android",
 ]
