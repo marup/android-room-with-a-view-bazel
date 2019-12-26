@@ -13,7 +13,7 @@ Building the code
 =================
 To build the code, run bazel from the main directory:
 
-`bazel build :all`
+`bazel build //RoomWordsSampleWithBazel:all`
 
 Build currently fails with errors related to desugaring. Most likely annotation processor related. Needs tweaking.
 
