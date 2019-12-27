@@ -9,13 +9,40 @@ repo](https://github.com/googlecodelabs/android-room-with-a-view) and
 the [Architecture Components
 codelab](https://codelabs.developers.google.com/codelabs/android-room-with-a-view/index.html?index=..%2F..%2Findex#0).
 
-Building the code
-=================
-To build the code, run bazel from the main directory:
+Build
+-----
+```
+$ bazel build //RoomWordsSampleWithBazel:all
+```
 
-`bazel build //RoomWordsSampleWithBazel:all`
+Build currently failing due to Room annotation processor not running correctly:
 
-Build currently fails with errors related to desugaring. Most likely annotation processor related. Needs tweaking.
+```
+$ bazel build //RoomWordsSampleWithBazel:all
+WARNING: API level 29 specified by android_ndk_repository 'androidndk' is not available. Using latest known API level 28
+INFO: Analyzed 6 targets (1 packages loaded, 75 targets configured).
+INFO: Found 6 targets...
+INFO: From Building RoomWordsSampleWithBazel/liblib.jar (8 source files) and running annotation processors (LifecycleProcessor, RoomProcessor):
+warning: No processor claimed any of these annotations: androidx.room.Query,androidx.annotation.NonNull,androidx.room.Insert,androidx.room.ColumnInfo,androidx.room.PrimaryKey,androidx.room.Dao,androidx.room.Database,androidx.room.Entity
+INFO: From Building RoomWordsSampleWithBazel/liblib.jar (8 source files) and running annotation processors (LifecycleProcessor, RoomProcessor):
+warning: No processor claimed any of these annotations: androidx.room.Query,androidx.annotation.NonNull,androidx.room.Insert,androidx.room.ColumnInfo,androidx.room.PrimaryKey,androidx.room.Dao,androidx.room.Database,androidx.room.Entity
+INFO: Elapsed time: 8.348s, Critical Path: 8.03s
+INFO: 22 processes: 17 linux-sandbox, 5 worker.
+INFO: Build completed successfully, 23 total actions
+```
+
+Deploy
+------
+```
+$ bazel mobile-install //RoomWordsSampleWithBazel
+
+```
+
+Or:
+
+```
+$ adb install -r bazel-bin/RoomWordsSampleWithBazel/RoomWordsSampleWithBazel.apk
+```
 
 License
 -------
