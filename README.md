@@ -15,8 +15,7 @@ Build
 $ bazel build //RoomWordsSampleWithBazel:all
 ```
 
-Build currently failing due to Room annotation processor not running correctly:
-
+Build succeeds, but gives the following warning:
 ```
 $ bazel build //RoomWordsSampleWithBazel:all
 WARNING: API level 29 specified by android_ndk_repository 'androidndk' is not available. Using latest known API level 28
@@ -29,6 +28,19 @@ warning: No processor claimed any of these annotations: androidx.room.Query,andr
 INFO: Elapsed time: 8.348s, Critical Path: 8.03s
 INFO: 22 processes: 17 linux-sandbox, 5 worker.
 INFO: Build completed successfully, 23 total actions
+``` 
+
+Installing and running the app results in `AndroidRuntime` exception:
+
+```
+12-30 18:32:53.390 13167 13167 E AndroidRuntime: Caused by: java.lang.ClassNotFoundException: Didn't find class "androidx.room.RoomDatabase" on path: DexPathList[[dex file "/data/local/tmp/incrementaldeployment/ca.maruko.android.roomwordssample/dex/incremental_classes3.dex", dex file "/data/local/tmp/incrementaldeployment/ca.maruko.android.roomwordssample/dex/incremental_classes8.dex", dex file 
+...
+"/data/local/tmp/incrementaldeployment/ca.maruko.android.roomwordssample/dex/incremental_classes7.dex"],nativeLibraryDirectories=[/data/user/0/ca.maruko.android.roomwordssample/lib, /system/lib64, /system/product/lib64]]
+12-30 18:32:53.390 13167 13167 E AndroidRuntime:        at dalvik.system.BaseDexClassLoader.findClass(BaseDexClassLoader.java:196)
+12-30 18:32:53.390 13167 13167 E AndroidRuntime:        at com.google.devtools.build.android.incrementaldeployment.IncrementalClassLoader$DelegateClassLoader.findClass(IncrementalClassLoader.java:57)
+12-30 18:32:53.390 13167 13167 E AndroidRuntime:        at java.lang.ClassLoader.loadClass(ClassLoader.java:379)
+12-30 18:32:53.390 13167 13167 E AndroidRuntime:        at java.lang.ClassLoader.loadClass(ClassLoader.java:312)
+12-30 18:32:53.390 13167 13167 E AndroidRuntime:        ... 35 more
 ```
 
 Deploy
